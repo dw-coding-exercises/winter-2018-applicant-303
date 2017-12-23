@@ -1,7 +1,8 @@
 (ns my-exercise.search
   "The code behind the search button."
   (:require [clojure.string :refer [join lower-case replace]]
-            [clj-http.client :as client]))
+            [clj-http.client :as client]
+            [clojure.pprint :refer [pprint]]))
 
 
 (defn address
@@ -52,7 +53,5 @@
 (defn find-election
   "finds an election"
   [args]
-  (println)
-  (println "finding: "
-           (hey-turbovote-wheres-my-elections args))
-  "OK")
+  (with-out-str (clojure.pprint/pprint
+                 (hey-turbovote-wheres-my-elections args))))
